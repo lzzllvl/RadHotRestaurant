@@ -1,5 +1,5 @@
-var tableData = require();
-var waitListData = require();
+var tableData = require(); //needs array exported
+var waitListData = require(); // array export
 
 module.exports = function(app){
 
@@ -14,7 +14,14 @@ module.exports = function(app){
   // ==================
 
   app.post("/api/tables", function(req, res){
-    res.json(tableData);
+    if (tableData.length < 5) {
+      tableData.push(req.body);
+      res.json(true);
+    }
+    else {
+      waitListData.push(req.body);
+      res.json(false);
+    }
   });
 
   app.post("/api/clear", () => {
