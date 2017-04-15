@@ -1,5 +1,5 @@
 const express = require('express');
-
+const tableList = require('./tableLists.js');
 const app = express();
 const PORT = 8080;
 
